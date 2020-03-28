@@ -57,5 +57,3 @@ export default connect(
     mapStateProps,
     mapDispatchToProps
 )(ProductList);
-
-// export default ProductList;

@@ -5,12 +5,12 @@ import getProductsAPI from "../api/getProduct.API";
 
 
 
-const addProducts = (pName) => {
+const addProducts = (obj) => {
     return dispatch => {
         dispatch({
             type: FETCH_ADD_PRODUCTS
         });
-        addProductsAPI(pName).then(res => {
+        addProductsAPI(obj).then(res => {
             // console.log("RES--------->>>>>>>>>>", res);
             if (res) {
                 dispatch({

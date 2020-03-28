@@ -16,10 +16,6 @@ class Products extends Component {
         this.state = {};
     }
 
-    // validateAddedProducts= () => {
-    //     this.state.
-    // }
-
     getProduct = () => {
         console.log("get product action called..........");
         this.props.getProducts();
@@ -34,17 +30,21 @@ class Products extends Component {
     getProd = (e) => {
         e.preventDefault();
         const pName = e.target.elements.prodname.value;
-        // console.log("user name %%%%%%%%%%%%%%%%%", user);
-        this.props.addProducts(pName);
+        const dName = e.target.elements.prodesc.value;
+        const obj = {
+            pName,
+            dName
+        }
+        // console.log("product name %%%%%%%%%%%%%%%%%", pName);
+        // console.log("describtion name %%%%%%%%%%%%%%%%%", dName);
 
-
+        this.props.addProducts(obj);
     }
 
     render() {
         const prod = this.props.products && this.props.products.productsData ? this.props.products.productsData.data : "";
         // console.log("frontEnd Props-->>>>>>>>>>", prod);
 
-        // const product = localStorage.getItem("products");
         return (
             <div>
                 <p>
@@ -54,13 +54,8 @@ class Products extends Component {
                 <Button onClick={this.getProduct} color="primary">Get All products</Button>
 
                 <p>
-                    {/* <GetInput getUser={this.getProd} /> */}
-                    <form onSubmit={this.getProd} >
-                        <input type="text" name="prodname"></input>
-                        <button type="submit">Submit</button>
-                    </form>
+                    <GetInput getUser={this.getProd} />
                 </p>
-
 
                 {this.props.products && this.props.products.productsData && this.props.products.productsData.data.map((el, index) => {
                     // console.log("elements_____>>>", el);
@@ -68,8 +63,6 @@ class Products extends Component {
                         <ProductList key={el.index} title={el.title} desc={el.desc} prodId={el.id} />
                     )
                 })}
-
-
             </div>
         );
     }
@@ -78,8 +71,6 @@ class Products extends Component {
 const mapStateProps = ({ products }) => {
     return {
         products: products.productsData
-
-
     };
 };
 const mapDispatchToProps = dispatch => {
