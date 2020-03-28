@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { Button, Label } from 'reactstrap';
 import getProductsAPI from './api/getProduct.API';
 import { getProducts } from './action/getProduct.action';
+import { Table } from "react-bootstrap";
+import ProductList from './components/productList';
+import { addProducts } from './action/addproduct.action';
+
 
 
 class Products extends Component {
@@ -15,26 +19,43 @@ class Products extends Component {
     //     this.state.
     // }
 
+    getProduct = () => {
+        console.log("get product action called..........");
+        this.props.getProducts();
+    }
+
     addProduct = () => {
         console.log("Add product action called..........");
-        this.props.getProducts();
+        this.props.addProducts();
 
 
     }
 
     render() {
-        console.log("frontEnd Props-->>>>>>>>>>", this.props);
+        const prod = this.props.products && this.props.products.productsData ? this.props.products.productsData.data : "";
+        // console.log("frontEnd Props-->>>>>>>>>>", prod);
 
-        const product = localStorage.getItem("products");
+        // const product = localStorage.getItem("products");
         return (
             <div>
                 <p>
                     Shopping cart
                </p>
 
-                <Button onClick={this.addProduct} color="primary">add product</Button>
+                <Button onClick={this.getProduct} color="primary">Get All products</Button>
+                <p>
+                    <input type="text" name="prodname"></input>
+                    <Button onClick={this.addProduct} color="primary">Enter products</Button>
+                </p>
 
-                <Label>{product}</Label>
+                {this.props.products && this.props.products.productsData && this.props.products.productsData.data.map((el, index) => {
+                    // console.log("elements_____>>>", el);
+                    return (
+                        <ProductList key={el.index} title={el.title} desc={el.desc} prodId={el.id} />
+                    )
+                })}
+
+
             </div>
         );
     }
@@ -49,12 +70,11 @@ const mapStateProps = ({ products }) => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        getProducts: () => dispatch(getProducts())
+        getProducts: () => dispatch(getProducts()),
+        addProducts: () => dispatch(addProducts())
     };
 };
 export default connect(
     mapStateProps,
     mapDispatchToProps
 )(Products);
-
-// export default Products;
