@@ -1,12 +1,13 @@
 import axios from "axios";
 
 
-const addProductsAPI = async () => {
-    console.log("addProductsAPI api called");
+const addProductsAPI = async (pName) => {
+
+    console.log("addProductsAPI api called", pName);
 
     return await axios.post("http://localhost:3000/products", {
 
-        "title": "pine apple",
+        "title": pName,
         "desc": "drink",
         "prise": 200
 

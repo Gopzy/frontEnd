@@ -6,6 +6,7 @@ import { getProducts } from './action/getProduct.action';
 import { Table } from "react-bootstrap";
 import ProductList from './components/productList';
 import { addProducts } from './action/addproduct.action';
+import GetInput from './components/getInput';
 
 
 
@@ -30,6 +31,14 @@ class Products extends Component {
 
 
     }
+    getProd = (e) => {
+        e.preventDefault();
+        const pName = e.target.elements.prodname.value;
+        // console.log("user name %%%%%%%%%%%%%%%%%", user);
+        this.props.addProducts(pName);
+
+
+    }
 
     render() {
         const prod = this.props.products && this.props.products.productsData ? this.props.products.productsData.data : "";
@@ -43,10 +52,15 @@ class Products extends Component {
                </p>
 
                 <Button onClick={this.getProduct} color="primary">Get All products</Button>
+
                 <p>
-                    <input type="text" name="prodname"></input>
-                    <Button onClick={this.addProduct} color="primary">Enter products</Button>
+                    {/* <GetInput getUser={this.getProd} /> */}
+                    <form onSubmit={this.getProd} >
+                        <input type="text" name="prodname"></input>
+                        <button type="submit">Submit</button>
+                    </form>
                 </p>
+
 
                 {this.props.products && this.props.products.productsData && this.props.products.productsData.data.map((el, index) => {
                     // console.log("elements_____>>>", el);
@@ -71,7 +85,7 @@ const mapStateProps = ({ products }) => {
 const mapDispatchToProps = dispatch => {
     return {
         getProducts: () => dispatch(getProducts()),
-        addProducts: () => dispatch(addProducts())
+        addProducts: (pName) => dispatch(addProducts(pName))
     };
 };
 export default connect(
