@@ -3,7 +3,7 @@ import axios from "axios";
 
 const addTasksAPI = async (obj) => {
 
-    console.log("addProductsAPI api called", obj);
+    console.log("add tasks api called", obj);
 
     return await axios.post("http://localhost:3000/products", {
 

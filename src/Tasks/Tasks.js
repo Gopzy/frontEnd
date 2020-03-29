@@ -24,7 +24,7 @@ class Tasks extends Component {
         this.props.getTasks();
     }
 
-    addProduct = () => {
+    addTask = () => {
         console.log("Add task action called..........");
         this.props.addTasks();
 
