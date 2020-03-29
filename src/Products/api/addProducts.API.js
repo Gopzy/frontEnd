@@ -9,7 +9,8 @@ const addProductsAPI = async (obj) => {
 
         "title": obj.pName,
         "desc": obj.dName,
-        "prise": 200
+        "date": obj.Ddate,
+        "price": 200
 
     })
     // .then((res) => {

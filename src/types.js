@@ -12,3 +12,8 @@ export const DELETE_PRODUCTS_FAILED = '@products/delete/success';
 export const FETCH_ADD_PRODUCTS = '@products/add';
 export const FETCH_ADD_PRODUCTS_SUCCESS = '@products/add/success';
 export const FETCH_ADD_PRODUCTS_FAILED = '@products/add/success';
+
+
+export const EDIT_TASK = '@task/add/success';
+export const TASK_SUCCESS = '@task/add/success';
+export const EDIT_TASK_FAILED = '@task/add/success';

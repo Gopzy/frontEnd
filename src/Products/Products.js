@@ -16,6 +16,10 @@ class Products extends Component {
         this.state = {};
     }
 
+    componentDidMount() {
+        this.props.getProducts();
+    }
+
     getProduct = () => {
         console.log("get product action called..........");
         this.props.getProducts();
@@ -31,12 +35,14 @@ class Products extends Component {
         e.preventDefault();
         const pName = e.target.elements.prodname.value;
         const dName = e.target.elements.prodesc.value;
+        const Ddate = e.target.elements.birthday.value
         const obj = {
             pName,
-            dName
+            dName,
+            Ddate
         }
-        // console.log("product name %%%%%%%%%%%%%%%%%", pName);
-        // console.log("describtion name %%%%%%%%%%%%%%%%%", dName);
+        // localStorage.setItem('obj', JSON.stringify(obj));
+        console.log("date %%%%%%%%%%%%%%%%%", Ddate);
 
         this.props.addProducts(obj);
     }
@@ -58,9 +64,9 @@ class Products extends Component {
                 </p>
 
                 {this.props.products && this.props.products.productsData && this.props.products.productsData.data.map((el, index) => {
-                    // console.log("elements_____>>>", el);
+                    console.log("elements_____>>>", el);
                     return (
-                        <ProductList key={el.index} title={el.title} desc={el.desc} prodId={el.id} />
+                        <ProductList key={el.index} title={el.title} desc={el.desc} date={el.date} prodId={el.id} />
                     )
                 })}
             </div>
