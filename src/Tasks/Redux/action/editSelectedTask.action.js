@@ -1,7 +1,7 @@
-import getProductsAPI from "../api/getProduct.API";
 import { EDIT_TASK, TASK_SUCCESS, EDIT_TASK_FAILED } from "../../types";
 import edittaskAPI from "../api/edittask.API";
-import { FETCH_PRODUCTS, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILED } from "../../types";
+import { FETCH_TASKS_SUCCESS } from "../../types";
+import getTasksAPI from "../api/getTasks.API";
 
 const editSelectedtask = (obj) => {
     console.log("edit action called fffffffffffffffffffffffffffffffffffffffffffffff");
@@ -18,12 +18,12 @@ const editSelectedtask = (obj) => {
                     editData: res
                 });
                 dispatch(
-                    getProductsAPI().then(res => {
+                    getTasksAPI().then(res => {
                         // console.log("RES from delete segggggggg--------->>>>>>>>>>", res);
 
                         dispatch({
-                            type: FETCH_PRODUCTS_SUCCESS,
-                            productsData: res
+                            type: FETCH_TASKS_SUCCESS,
+                            tasksData: res
                         });
                     })
                 );

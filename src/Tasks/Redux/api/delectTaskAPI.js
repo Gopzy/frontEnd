@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const delectProductAPI = async (prodId) => {
+const delectTaskAPI = async (prodId) => {
     console.log("delet ProductAPI api called prodId", prodId);
 
     return await axios.delete("http://localhost:3000/products/" + prodId)
@@ -18,4 +18,4 @@ const delectProductAPI = async (prodId) => {
 
 }
 
-export default delectProductAPI;
+export default delectTaskAPI;

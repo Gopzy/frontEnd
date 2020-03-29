@@ -2,7 +2,7 @@
 import axios from "axios";
 
 
-const getProductsAPI = async () => {
+const getTasksAPI = async () => {
     console.log("api called");
 
     return await axios.get("http://localhost:3000/products")
@@ -13,4 +13,4 @@ const getProductsAPI = async () => {
 
 }
 
-export default getProductsAPI;
+export default getTasksAPI;

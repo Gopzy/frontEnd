@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
+import rootReducer from './Tasks/Redux/rootReducer/index';
+import configureStore from './Tasks/configureStore';
 
-import rootReducer from './Products/rootReducer';
-import configureStore from './Products/configureStore';
 
 
 //redux store

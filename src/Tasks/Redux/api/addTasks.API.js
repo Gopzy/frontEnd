@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const addProductsAPI = async (obj) => {
+const addTasksAPI = async (obj) => {
 
     console.log("addProductsAPI api called", obj);
 
@@ -20,4 +20,4 @@ const addProductsAPI = async (obj) => {
 
 }
 
-export default addProductsAPI;
+export default addTasksAPI;

@@ -1,36 +1,36 @@
 import React, { Component } from 'react';
-import { delectSelectedProduct } from '../action/delectSelectedProduct.action';
+import { delectSelectedTask } from '../Redux/action/delectSelectedTask.action';
 import { Button, Label } from 'reactstrap';
 import { connect } from 'react-redux';
-import { editSelectedtask } from '../action/editSelectedTask.action'
+import { editSelectedtask } from '../Redux/action/editSelectedTask.action'
 
 
-class ProductList extends Component {
+class TaskList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // prodId: ''
+            // taskId: ''
         };
     }
 
     render() {
-        console.log("ProductList>>>>>>>pppppppppppppppppppppppp", this.props);
+        console.log("Task List>>>>>>>pppppppppppppppppppppppp", this.props);
 
-        const { title, desc, date, prodId } = this.props;
+        const { title, desc, date, taskId } = this.props;
 
-        const delectProduct = () => {
+        const delectTask = () => {
 
-            const pId = this.props.prodId;
-            // console.log("delectproduct called00000000000000000000000000000");
-            this.props.delectSelectedProduct(pId);
+            const pId = this.props.taskId;
+            // console.log("delect task called00000000000000000000000000000");
+            this.props.delectSelectedTask(pId);
 
         }
-        const editProduct = (e) => {
+        const editTask = (e) => {
 
             const pName = e.target.elements.editname.value;
             const dName = e.target.elements.editdesc.value;
             const Ddate = e.target.elements.editDate.value;
-            const pId = this.props.prodId;
+            const pId = this.props.taskId;
             const obj = {
                 pName,
                 dName,
@@ -44,14 +44,14 @@ class ProductList extends Component {
         }
 
         return (
-            <form onSubmit={editProduct}>
+            <form onSubmit={editTask}>
                 <table align="center">
                     {title} &nbsp;&nbsp;
                     {desc}&nbsp;&nbsp;
                     {date} &nbsp;&nbsp;
-                    <Button className="pull-right" color="success" onClick={editProduct}>edit</Button>
+                    <Button className="pull-right" color="success" onClick={editTask}>edit</Button>
                     &nbsp;
-                    <Button className="pull-right" color="success" onClick={delectProduct}>delete</Button>
+                    <Button className="pull-right" color="success" onClick={delectTask}>delete</Button>
 
                     <br></br>
                     {/* <label for="editname">Edit task:</label>
@@ -69,43 +69,25 @@ class ProductList extends Component {
                         <button type="submit">Submit to edit</button> */}
                 </table>
             </form>
-            // <div>
-            //     <tr>
-            //         <th>
-            //             {title}
-            //         </th>&nbsp;&nbsp;
-            //         <td>
-            //             {desc}
-            //         </td>&nbsp;&nbsp;
-            //         <td>
-            //             {date}
-            //         </td>&nbsp;
-            //         <Button className="pull-right" color="success" onClick={editProduct}>edit</Button>
-            //         <td>&nbsp;
-            //         <Button className="pull-right" color="success" onClick={delectProduct}>delete</Button>
-            //         </td>
 
-
-            //     </tr>
-            // </div>
         );
     }
 }
 
-const mapStateProps = ({ products }) => {
+const mapStateProps = ({ tasks }) => {
     return {
-        products: products.productsData
+        tasks: tasks.tasksData
 
 
     };
 };
 const mapDispatchToProps = dispatch => {
     return {
-        delectSelectedProduct: (pId) => dispatch(delectSelectedProduct(pId)),
+        delectSelectedTask: (pId) => dispatch(delectSelectedTask(pId)),
         editSelectedtask: (pId) => dispatch(editSelectedtask(pId))
     };
 };
 export default connect(
     mapStateProps,
     mapDispatchToProps
-)(ProductList);
+)(TaskList);
