@@ -49,7 +49,7 @@ class Tasks extends Component {
         return (
             <div>
                 <p>
-                    To Do Tasks
+                    To Do List
                </p>
 
                 <Button onClick={this.getTask} color="primary">Get All Tasks</Button>

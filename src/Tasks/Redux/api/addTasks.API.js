@@ -5,7 +5,7 @@ const addTasksAPI = async (obj) => {
 
     console.log("add tasks api called", obj);
 
-    return await axios.post("http://localhost:3000/products", {
+    return await axios.post("http://localhost:3000/tasks", {
 
         "title": obj.pName,
         "desc": obj.dName,

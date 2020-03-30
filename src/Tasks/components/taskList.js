@@ -20,9 +20,9 @@ class TaskList extends Component {
 
         const delectTask = () => {
 
-            const pId = this.props.taskId;
+            const tId = this.props.taskId;
             // console.log("delect task called00000000000000000000000000000");
-            this.props.delectSelectedTask(pId);
+            this.props.delectSelectedTask(tId);
 
         }
         const editTask = (e) => {

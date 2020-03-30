@@ -5,7 +5,7 @@ const edittaskAPI = async (obj) => {
 
     console.log("edittaskAPI api called", obj);
 
-    return await axios.patch("http://localhost:3000/products/" + obj.pId, {
+    return await axios.patch("http://localhost:3000/tasks/" + obj.pId, {
 
 
         "title": obj.pName,

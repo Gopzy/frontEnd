@@ -1,10 +1,10 @@
 import axios from "axios";
 
 
-const delectTaskAPI = async (prodId) => {
-    console.log("delet tasks api called prodId", prodId);
+const delectTaskAPI = async (tId) => {
+    console.log("delet tasks api called prodId", tId);
 
-    return await axios.delete("http://localhost:3000/products/" + prodId)
+    return await axios.delete("http://localhost:3000/tasks/" + tId)
     // .then((res) => {
     //     console.log("responce", res);
     // })

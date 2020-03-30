@@ -5,12 +5,12 @@ import getTasksAPI from "../api/getTasks.API";
 
 
 
-const delectSelectedTask = (pId) => {
+const delectSelectedTask = (tId) => {
     return dispatch => {
         dispatch({
             type: DELETE_TASK
         });
-        delectTaskAPI(pId).then(res => {
+        delectTaskAPI(tId).then(res => {
             // console.log("RES--------->>>>>>>>>>", res);
             if (res) {
                 dispatch({
