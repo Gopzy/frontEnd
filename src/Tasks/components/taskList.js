@@ -39,7 +39,7 @@ class TaskList extends Component {
           {title} &nbsp;&nbsp;
           {desc}&nbsp;&nbsp;
           {date.substring(0, 10)} &nbsp;&nbsp;
-          <Button className="pull-right" color="success" onClick={editTask}>
+          <Button className="pull-right" color="success" >
             edit
           </Button>
           &nbsp;
