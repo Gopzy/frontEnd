@@ -11,7 +11,6 @@ const delectSelectedTask = (tId) => {
             type: DELETE_TASK
         });
         delectTaskAPI(tId).then(res => {
-            // console.log("RES--------->>>>>>>>>>", res);
             if (res) {
                 dispatch({
                     type: DELETE_TASK_SUCCESS,
@@ -19,17 +18,13 @@ const delectSelectedTask = (tId) => {
                 });
                 dispatch(
                     getTasksAPI().then(res => {
-                        // console.log("RES from delete segggggggg--------->>>>>>>>>>", res);
-
                         dispatch({
                             type: FETCH_TASKS_SUCCESS,
                             tasksData: res
                         });
                     })
                 );
-
             }
-
         }).catch(error => {
             dispatch({
                 type: DELETE_TASK_FAILED,

@@ -1,5 +1,4 @@
 import { FETCH_TASKS, FETCH_TASKS_SUCCESS, FETCH_TASKS_FAILED } from "../../types";
-// import { FETCH_FALSE } from "./../../../../redux/common/types";
 import { STORE_GLOBAL_ERROR } from "../../types";
 
 export default (state = { fetch: false, error: null, tasksData: {} }, action) => {

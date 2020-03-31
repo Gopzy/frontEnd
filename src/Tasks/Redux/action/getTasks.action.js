@@ -9,8 +9,6 @@ const getTasks = () => {
             type: FETCH_TASKS
         });
         getTasksAPI().then(res => {
-            // console.log("RES--------->>>>>>>>>>", res);
-
             dispatch({
                 type: FETCH_TASKS_SUCCESS,
                 tasksData: res

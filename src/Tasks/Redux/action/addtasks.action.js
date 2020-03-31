@@ -11,7 +11,6 @@ const addTasks = (obj) => {
             type: FETCH_ADD_TASK
         });
         addTasksAPI(obj).then(res => {
-            // console.log("RES--------->>>>>>>>>>", res);
             if (res) {
                 dispatch({
                     type: FETCH_ADD_TASK_SUCCESS,
@@ -19,7 +18,6 @@ const addTasks = (obj) => {
                 });
                 dispatch(
                     getTasksAPI().then(res => {
-                        // console.log("RES from delete segggggggg--------->>>>>>>>>>", res);
                         dispatch({
                             type: FETCH_TASKS_SUCCESS,
                             tasksData: res
@@ -27,7 +25,6 @@ const addTasks = (obj) => {
                     })
                 );
             }
-
         }).catch(error => {
             dispatch({
                 type: FETCH_ADD_TASK_FAILED,

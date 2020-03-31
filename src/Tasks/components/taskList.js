@@ -1,60 +1,53 @@
-import React, { Component } from 'react';
-import { delectSelectedTask } from '../Redux/action/delectSelectedTask.action';
-import { Button, Label } from 'reactstrap';
-import { connect } from 'react-redux';
-import { editSelectedtask } from '../Redux/action/editSelectedTask.action'
-
+import React, { Component } from "react";
+import { delectSelectedTask } from "../Redux/action/delectSelectedTask.action";
+import { Button, Label } from "reactstrap";
+import { connect } from "react-redux";
+import { editSelectedtask } from "../Redux/action/editSelectedTask.action";
 
 class TaskList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            // taskId: ''
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      // taskId: ''
+    };
+  }
 
-    render() {
-        console.log("Task List>>>>>>>pppppppppppppppppppppppp", this.props);
+  render() {
+    const { title, desc, date, taskId } = this.props;
 
-        const { title, desc, date, taskId } = this.props;
+    const delectTask = () => {
+      const tId = this.props.taskId;
+      this.props.delectSelectedTask(tId);
+    };
+    const editTask = e => {
+      const pName = e.target.elements.editname.value;
+      const dName = e.target.elements.editdesc.value;
+      const Ddate = e.target.elements.editDate.value;
+      const pId = this.props.taskId;
+      const obj = {
+        pName,
+        dName,
+        Ddate,
+        pId
+      };
+      this.props.editSelectedtask(obj);
+    };
 
-        const delectTask = () => {
-
-            const tId = this.props.taskId;
-            // console.log("delect task called00000000000000000000000000000");
-            this.props.delectSelectedTask(tId);
-
-        }
-        const editTask = (e) => {
-
-            const pName = e.target.elements.editname.value;
-            const dName = e.target.elements.editdesc.value;
-            const Ddate = e.target.elements.editDate.value;
-            const pId = this.props.taskId;
-            const obj = {
-                pName,
-                dName,
-                Ddate,
-                pId
-            }
-            console.log("eddddddddddddddddddddddddddddddddittttttt", obj);
-
-
-            this.props.editSelectedtask(obj);
-        }
-
-        return (
-            <form onSubmit={editTask}>
-                <table align="center">
-                    {title} &nbsp;&nbsp;
-                    {desc}&nbsp;&nbsp;
-                    {date} &nbsp;&nbsp;
-                    <Button className="pull-right" color="success" onClick={editTask}>edit</Button>
-                    &nbsp;
-                    <Button className="pull-right" color="success" onClick={delectTask}>delete</Button>
-
-                    <br></br>
-                    {/* <label for="editname">Edit task:</label>
+    return (
+      <form onSubmit={editTask}>
+        <table align="center">
+          {title} &nbsp;&nbsp;
+          {desc}&nbsp;&nbsp;
+          {date.substring(0, 10)} &nbsp;&nbsp;
+          <Button className="pull-right" color="success" onClick={editTask}>
+            edit
+          </Button>
+          &nbsp;
+          <Button className="pull-right" color="success" onClick={delectTask}>
+            delete
+          </Button>
+          <br></br>
+          {/* <label for="editname">Edit task:</label>
                         <input type="text" name="editname"></input>
                                 &nbsp;&nbsp;
 
@@ -67,27 +60,21 @@ class TaskList extends Component {
                                 &nbsp;&nbsp;
 
                         <button type="submit">Submit to edit</button> */}
-                </table>
-            </form>
-
-        );
-    }
+        </table>
+      </form>
+    );
+  }
 }
 
 const mapStateProps = ({ tasks }) => {
-    return {
-        tasks: tasks.tasksData
-
-
-    };
+  return {
+    tasks: tasks.tasksData
+  };
 };
 const mapDispatchToProps = dispatch => {
-    return {
-        delectSelectedTask: (pId) => dispatch(delectSelectedTask(pId)),
-        editSelectedtask: (pId) => dispatch(editSelectedtask(pId))
-    };
+  return {
+    delectSelectedTask: pId => dispatch(delectSelectedTask(pId)),
+    editSelectedtask: pId => dispatch(editSelectedtask(pId))
+  };
 };
-export default connect(
-    mapStateProps,
-    mapDispatchToProps
-)(TaskList);
+export default connect(mapStateProps, mapDispatchToProps)(TaskList);

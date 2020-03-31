@@ -7,11 +7,9 @@ const edittaskAPI = async (obj) => {
 
     return await axios.patch("http://localhost:3000/tasks/" + obj.pId, {
 
-
         "title": obj.pName,
         "desc": obj.dName,
         "date": obj.Ddate
-
     })
 }
 
